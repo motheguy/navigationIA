@@ -1,0 +1,16 @@
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.exe
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.deps.json
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.runtimeconfig.json
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.runtimeconfig.dev.json
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.dll
+C:\Users\Utilisateur\Documents\ProjetIA\projet\bin\Debug\netcoreapp3.1\projet.pdb
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.csprojAssemblyReference.cache
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.Properties.Resources.resources
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.csproj.GenerateResource.cache
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.AssemblyInfoInputs.cache
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.AssemblyInfo.cs
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.dll
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.pdb
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.genruntimeconfig.cache
+C:\Users\Utilisateur\Documents\ProjetIA\projet\obj\Debug\netcoreapp3.1\projet.MainForm.resources
