@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projet\\projet.csproj": {}
+    "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projetv2\\projet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projet\\projet.csproj": {
+    "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projetv2\\projet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projet\\projet.csproj",
+        "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projetv2\\projet.csproj",
         "projectName": "projet",
-        "projectPath": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projet\\projet.csproj",
+        "projectPath": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projetv2\\projet.csproj",
         "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projet\\obj\\",
+        "outputPath": "C:\\Users\\Utilisateur\\Documents\\ProjetIA\\projetv2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.Label label1;
             this.pictureBoxOcean = new System.Windows.Forms.PictureBox();
             this.btnClic = new System.Windows.Forms.Button();
             this.textBoxXi = new System.Windows.Forms.TextBox();
@@ -42,29 +40,27 @@
             this.lblYf = new System.Windows.Forms.Label();
             this.textBoxXf = new System.Windows.Forms.TextBox();
             this.textBoxYf = new System.Windows.Forms.TextBox();
-            this.textBoxVent = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
+            this.lblWind = new System.Windows.Forms.Label();
+            this.cmbBxWind = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxResult = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOcean)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxOcean
             // 
-            this.pictureBoxOcean.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxOcean.Image")));
-            this.pictureBoxOcean.Location = new System.Drawing.Point(304, 35);
-            this.pictureBoxOcean.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxOcean.Location = new System.Drawing.Point(243, 28);
             this.pictureBoxOcean.Name = "pictureBoxOcean";
-            this.pictureBoxOcean.Size = new System.Drawing.Size(375, 375);
-            this.pictureBoxOcean.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxOcean.Size = new System.Drawing.Size(300, 300);
             this.pictureBoxOcean.TabIndex = 0;
             this.pictureBoxOcean.TabStop = false;
             // 
             // btnClic
             // 
             this.btnClic.AccessibleName = "";
-            this.btnClic.Location = new System.Drawing.Point(72, 25);
-            this.btnClic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClic.Location = new System.Drawing.Point(12, 12);
             this.btnClic.Name = "btnClic";
-            this.btnClic.Size = new System.Drawing.Size(118, 36);
+            this.btnClic.Size = new System.Drawing.Size(94, 29);
             this.btnClic.TabIndex = 1;
             this.btnClic.Text = "Demarrer";
             this.btnClic.UseVisualStyleBackColor = true;
@@ -72,125 +68,147 @@
             // 
             // textBoxXi
             // 
-            this.textBoxXi.Location = new System.Drawing.Point(72, 200);
-            this.textBoxXi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxXi.Location = new System.Drawing.Point(58, 160);
             this.textBoxXi.Name = "textBoxXi";
-            this.textBoxXi.Size = new System.Drawing.Size(161, 31);
+            this.textBoxXi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxXi.Size = new System.Drawing.Size(130, 27);
             this.textBoxXi.TabIndex = 2;
             this.textBoxXi.Text = "3";
+            this.textBoxXi.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
             // lblInitCordinates
             // 
             this.lblInitCordinates.AutoSize = true;
-            this.lblInitCordinates.Location = new System.Drawing.Point(15, 157);
-            this.lblInitCordinates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInitCordinates.Location = new System.Drawing.Point(12, 126);
             this.lblInitCordinates.Name = "lblInitCordinates";
-            this.lblInitCordinates.Size = new System.Drawing.Size(196, 25);
+            this.lblInitCordinates.Size = new System.Drawing.Size(163, 20);
             this.lblInitCordinates.TabIndex = 3;
             this.lblInitCordinates.Text = "Coordonnées initiales : ";
             // 
             // lblXi
             // 
             this.lblXi.AutoSize = true;
-            this.lblXi.Location = new System.Drawing.Point(29, 203);
-            this.lblXi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblXi.Location = new System.Drawing.Point(23, 162);
             this.lblXi.Name = "lblXi";
-            this.lblXi.Size = new System.Drawing.Size(36, 25);
+            this.lblXi.Size = new System.Drawing.Size(29, 20);
             this.lblXi.TabIndex = 4;
             this.lblXi.Text = "Xi :";
             // 
             // textBoxYi
             // 
-            this.textBoxYi.Location = new System.Drawing.Point(72, 258);
-            this.textBoxYi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxYi.Location = new System.Drawing.Point(58, 206);
             this.textBoxYi.Name = "textBoxYi";
-            this.textBoxYi.Size = new System.Drawing.Size(161, 31);
+            this.textBoxYi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxYi.Size = new System.Drawing.Size(130, 27);
             this.textBoxYi.TabIndex = 5;
             this.textBoxYi.Text = "3";
+            this.textBoxYi.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
             // lblYi
             // 
             this.lblYi.AutoSize = true;
-            this.lblYi.Location = new System.Drawing.Point(29, 258);
-            this.lblYi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblYi.Location = new System.Drawing.Point(23, 206);
             this.lblYi.Name = "lblYi";
-            this.lblYi.Size = new System.Drawing.Size(35, 25);
+            this.lblYi.Size = new System.Drawing.Size(28, 20);
             this.lblYi.TabIndex = 6;
             this.lblYi.Text = "Yi :";
             // 
             // lblEndCordinates
             // 
             this.lblEndCordinates.AutoSize = true;
-            this.lblEndCordinates.Location = new System.Drawing.Point(15, 317);
-            this.lblEndCordinates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEndCordinates.Location = new System.Drawing.Point(12, 254);
             this.lblEndCordinates.Name = "lblEndCordinates";
-            this.lblEndCordinates.Size = new System.Drawing.Size(183, 25);
+            this.lblEndCordinates.Size = new System.Drawing.Size(151, 20);
             this.lblEndCordinates.TabIndex = 7;
             this.lblEndCordinates.Text = "Coordonnées finales :";
             // 
             // lblXf
             // 
             this.lblXf.AutoSize = true;
-            this.lblXf.Location = new System.Drawing.Point(26, 358);
-            this.lblXf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblXf.Location = new System.Drawing.Point(21, 286);
             this.lblXf.Name = "lblXf";
-            this.lblXf.Size = new System.Drawing.Size(38, 25);
+            this.lblXf.Size = new System.Drawing.Size(30, 20);
             this.lblXf.TabIndex = 8;
             this.lblXf.Text = "Xf :";
             // 
             // lblYf
             // 
             this.lblYf.AutoSize = true;
-            this.lblYf.Location = new System.Drawing.Point(29, 403);
-            this.lblYf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblYf.Location = new System.Drawing.Point(23, 322);
             this.lblYf.Name = "lblYf";
-            this.lblYf.Size = new System.Drawing.Size(37, 25);
+            this.lblYf.Size = new System.Drawing.Size(29, 20);
             this.lblYf.TabIndex = 10;
             this.lblYf.Text = "Yf :";
             // 
             // textBoxXf
             // 
-            this.textBoxXf.Location = new System.Drawing.Point(72, 358);
-            this.textBoxXf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxXf.Location = new System.Drawing.Point(58, 286);
             this.textBoxXf.Name = "textBoxXf";
-            this.textBoxXf.Size = new System.Drawing.Size(161, 31);
+            this.textBoxXf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxXf.Size = new System.Drawing.Size(130, 27);
             this.textBoxXf.TabIndex = 11;
             this.textBoxXf.Text = "210";
+            this.textBoxXf.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
             // textBoxYf
             // 
-            this.textBoxYf.Location = new System.Drawing.Point(72, 403);
-            this.textBoxYf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxYf.Location = new System.Drawing.Point(58, 322);
             this.textBoxYf.Name = "textBoxYf";
-            this.textBoxYf.Size = new System.Drawing.Size(161, 31);
+            this.textBoxYf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxYf.Size = new System.Drawing.Size(130, 27);
             this.textBoxYf.TabIndex = 12;
             this.textBoxYf.Text = "210";
+            this.textBoxYf.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
-            // textBoxVent
+            // lblWind
             // 
-            this.textBoxVent.Location = new System.Drawing.Point(72, 113);
-            this.textBoxVent.Name = "textBoxVent";
-            this.textBoxVent.Size = new System.Drawing.Size(161, 31);
-            this.textBoxVent.TabIndex = 13;
-            this.textBoxVent.Text = "a";
+            this.lblWind.AutoSize = true;
+            this.lblWind.Location = new System.Drawing.Point(13, 60);
+            this.lblWind.Name = "lblWind";
+            this.lblWind.Size = new System.Drawing.Size(100, 20);
+            this.lblWind.TabIndex = 14;
+            this.lblWind.Text = "Type de vent :";
             // 
-            // label1
+            // cmbBxWind
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(15, 75);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(122, 25);
-            label1.TabIndex = 14;
-            label1.Text = "Type de vent :";
-            label1.Click += new System.EventHandler(this.label1_Click);
+            this.cmbBxWind.FormattingEnabled = true;
+            this.cmbBxWind.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c"});
+            this.cmbBxWind.Location = new System.Drawing.Point(58, 86);
+            this.cmbBxWind.Name = "cmbBxWind";
+            this.cmbBxWind.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmbBxWind.Size = new System.Drawing.Size(130, 28);
+            this.cmbBxWind.TabIndex = 15;
+            this.cmbBxWind.Text = "a";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(123, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Test Animation";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // textBoxResult
+            // 
+            this.textBoxResult.Location = new System.Drawing.Point(240, 363);
+            this.textBoxResult.Name = "textBoxResult";
+            this.textBoxResult.Size = new System.Drawing.Size(303, 27);
+            this.textBoxResult.TabIndex = 17;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 448);
-            this.Controls.Add(label1);
-            this.Controls.Add(this.textBoxVent);
+            this.ClientSize = new System.Drawing.Size(570, 401);
+            this.Controls.Add(this.textBoxResult);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmbBxWind);
+            this.Controls.Add(this.lblWind);
             this.Controls.Add(this.textBoxYf);
             this.Controls.Add(this.textBoxXf);
             this.Controls.Add(this.lblYf);
@@ -203,7 +221,7 @@
             this.Controls.Add(this.textBoxXi);
             this.Controls.Add(this.btnClic);
             this.Controls.Add(this.pictureBoxOcean);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.Text = "Navigation";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOcean)).EndInit();
@@ -226,8 +244,10 @@
         private System.Windows.Forms.Label lblYf;
         private System.Windows.Forms.TextBox textBoxXf;
         private System.Windows.Forms.TextBox textBoxYf;
-        private System.Windows.Forms.TextBox textBoxVent;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWind;
+        private System.Windows.Forms.ComboBox cmbBxWind;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxResult;
     }
 }
 
