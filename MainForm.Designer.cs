@@ -147,7 +147,7 @@
             this.textBoxXf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxXf.Size = new System.Drawing.Size(130, 27);
             this.textBoxXf.TabIndex = 11;
-            this.textBoxXf.Text = "210";
+            this.textBoxXf.Text = "100";
             this.textBoxXf.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
             // textBoxYf
@@ -157,7 +157,7 @@
             this.textBoxYf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxYf.Size = new System.Drawing.Size(130, 27);
             this.textBoxYf.TabIndex = 12;
-            this.textBoxYf.Text = "210";
+            this.textBoxYf.Text = "100";
             this.textBoxYf.TextChanged += new System.EventHandler(this.NewCoordinate);
             // 
             // lblWind

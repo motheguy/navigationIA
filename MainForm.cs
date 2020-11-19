@@ -52,7 +52,7 @@ namespace projet
             Draw();
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             //Quand l'utilisateur appuie sur le bouton démarrer, le code se lance
 
@@ -62,17 +62,41 @@ namespace projet
             Yi = Convert.ToInt32(textBoxYi.Text);
             Xf = Convert.ToInt32(textBoxXf.Text);
             Yf = Convert.ToInt32(textBoxYf.Text);
+            cas = cmbBxWind.Text[0];
+            textBoxResult.Text = "Type de vent choisi : "+cas+"";
+            await Task.Delay(20);
 
             SearchTree g = new SearchTree();
 
-            //On créé le point de départ
+            //On crée le point de départ
             BoatNode N0 = new BoatNode(Xi, Yi);
 
-            //On créé le point d'arrivée
+            //On crée le point d'arrivée
             BoatNode Nf = new BoatNode(Xf, Yf);
 
             //On lance la recherche du meilleur chemin
             List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+
+            if (solution.Count == 0)//il n'y a pas de solution
+            {
+                textBoxResult.Text = "Pas de solution";
+            }
+            else
+            {
+                textBoxResult.Text = "Une solution a été trouvée";
+                // Petite animation
+                Pen penWhite = new Pen(Color.White);
+                for (int i = 0; i < solution.Count - 2; i++)
+                {
+                    Bitmap bg = pictureBoxOcean.Image as Bitmap;
+                    Graphics gph = Graphics.FromImage(bg);
+                    gph.DrawLine(penWhite, new Point((int)((BoatNode)solution[i]).x, (int)((BoatNode)solution[i]).y), new Point((int)((BoatNode)solution[i + 1]).x, (int)((BoatNode)solution[i + 1]).y));
+                    pictureBoxOcean.Image = bg;
+                    await Task.Delay(200);
+                }
+                textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
+            }
+
 
             //A FAIRE 
             //gerer l'affichage

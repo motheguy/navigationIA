@@ -9,6 +9,8 @@ namespace projet
     {
         public double x;
         public double y;
+        public char cas = MainForm.cas;//'a'; à modifier en ‘b’ ou ‘c’ selon le choix de l’utilisateur
+
 
         //Constructeurs
         public BoatNode(int X, int Y) //avec arguments
@@ -22,11 +24,17 @@ namespace projet
 
         }
 
-        public override double CalculeHCost()
+        /// <summary>
+        /// Calculates a time estimation to reach the final node
+        /// </summary>
+        /// <returns>Time estimation between a node and the final node</returns>
+        public override double CalculeHCost() 
         {
             //Permet d'obtenir une estimation heuristique du cout pour atteindre le point final
 
-            throw new NotImplementedException();
+            double distance = Math.Sqrt((x - MainForm.Xf) * (x - MainForm.Xf) + (y - MainForm.Yf) * (y - MainForm.Xf));
+            double boatspeed = 45;
+            return (distance / boatspeed);
         }
 
         public override bool EndState()
@@ -34,6 +42,11 @@ namespace projet
             return (x == MainForm.Xf && y == MainForm.Yf);
         }
 
+        /// <summary>
+        /// Calculates the cost in terms of time between two nodes
+        /// </summary>
+        /// <param name="N2"></param>
+        /// <returns>Arc Cost between this node and N2</returns>
         public override double GetArcCost(GenericNode N2) //OK a verifier
         {
             //Permet d'obtenir le cout de l'arc entre 2 noeuds
@@ -43,55 +56,41 @@ namespace projet
             return valGCostN2;
         }
 
+        /// <summary>
+        /// Returns the 8 nodes adjacent to the studied node
+        /// </summary>
+        /// <returns>List of GenericNode</returns>
         public override List<GenericNode> GetListSucc() //OK a verifier
         {
             //on recupere les valeurs des points voisins et on les ajoute a notre liste
             //notre pavage est carre et le point considere possède 8 voisins
 
             List<GenericNode> successeur = new List<GenericNode>();
-            BoatNode b1 = new BoatNode();
-            b1.x = x + 1;
-            b1.y = y;
+            BoatNode b1 = new BoatNode((int)x+1, (int)y);
             successeur.Add(b1);
 
-            BoatNode b2 = new BoatNode();
-            b2.x = x - 1;
-            b2.y = y;
+            BoatNode b2 = new BoatNode((int)x-1,(int)y);
             successeur.Add(b2);
 
-            BoatNode b3 = new BoatNode();
-            b3.x = x;
-            b3.y = y - 1;
+            BoatNode b3 = new BoatNode((int)x, (int)y-1);
             successeur.Add(b3);
 
-            BoatNode b4 = new BoatNode();
-            b4.x = x + 1;
-            b4.y = y - 1;
+            BoatNode b4 = new BoatNode((int)x+1,(int)y-1);
             successeur.Add(b4);
 
-            BoatNode b5 = new BoatNode();
-            b5.x = x - 1;
-            b5.y = y - 1;
+            BoatNode b5 = new BoatNode((int)x-1,(int)y-1);
             successeur.Add(b5);
 
-            BoatNode b6 = new BoatNode();
-            b6.x = x;
-            b6.y = y + 1;
+            BoatNode b6 = new BoatNode((int)x,(int)y+1);
             successeur.Add(b6);
 
-            BoatNode b7 = new BoatNode();
-            b7.x = x + 1;
-            b7.y = y + 1;
+            BoatNode b7 = new BoatNode((int)x+1,(int)y+1);
             successeur.Add(b7);
 
-            BoatNode b8 = new BoatNode();
-            b8.x = x - 1;
-            b8.y = y + 1;
+            BoatNode b8 = new BoatNode((int)x-1,(int)y+1);
             successeur.Add(b8);
 
             return successeur;
-
-            throw new NotImplementedException();
         }
 
         public override bool IsEqual(GenericNode N2)
@@ -101,7 +100,6 @@ namespace projet
         }
 
         //Code de Salotti
-        public char cas = 'a'; // à modifier en ‘b’ ou ‘c’ selon le choix de l’utilisateur // A FAIRE
         public double get_wind_speed(double x, double y) //OK a verifier
         {
             //On distingue plusieurs cas en fonction de la valeur du char cas, saisi par l'utilisateur
