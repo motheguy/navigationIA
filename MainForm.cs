@@ -34,7 +34,7 @@ namespace projet
             Bitmap end = Bitmap.FromFile(".\\images\\x.png") as Bitmap;
             //Pen penRed = new Pen(Color.Red); //d'autres couleurs possibles
             //A faire : Changer les textBox pour des NumericUpDown 
-            int beginX = textBoxXi.Text==""?0: Convert.ToInt32(textBoxXi.Text);
+            int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
             int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
             int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
             int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
@@ -51,7 +51,7 @@ namespace projet
         {
             Draw();
         }
-        
+
         private async void button1_Click(object sender, EventArgs e)
         {
             //Quand l'utilisateur appuie sur le bouton démarrer, le code se lance
@@ -63,7 +63,7 @@ namespace projet
             Xf = Convert.ToInt32(textBoxXf.Text);
             Yf = Convert.ToInt32(textBoxYf.Text);
             cas = cmbBxWind.Text[0];
-            textBoxResult.Text = "Type de vent choisi : "+cas+"";
+            textBoxResult.Text = "Type de vent choisi : " + cas + "";
             await Task.Delay(20);
 
             SearchTree g = new SearchTree();
@@ -95,20 +95,14 @@ namespace projet
                     await Task.Delay(200);
                 }
                 textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
+                double time = 0;
+                foreach (GenericNode noeud in solution)
+                {
+                    time = time + noeud.GetGCost();
+                }
+                textBoxTime.Text = time.ToString() + "h";
             }
 
-
-            //A FAIRE 
-            //gerer l'affichage
-
-            /*Code de Salotti :
-             * 
-             * soient x1,y1 et x2,y2 les deux extrêmités du segment
-             * Pen penwhite = new Pen(Color.White); //d'autres couleurs possibles
-             * Graphics g = pictureBox1.CreateGraphics();
-             * g.DrawLine(penwhite, new Point((int)x1, pictureBox1.Height-(int)y1),
-             *                      new Point((int)x2, pictureBox1.Height-(int)y2));
-             */
         }
         /// <summary>
         /// Juste un test
@@ -123,13 +117,13 @@ namespace projet
             textBoxYf.Text = "20";
             Draw();
             //Récuperer les coordonnées de chaque noeud enregistré normalement dans solution
-            List<GenericNode> listCoordTest = new List<GenericNode>() { new BoatNode(10, 12), new BoatNode(10,14), new BoatNode(10, 16), new BoatNode(10, 18), new BoatNode(10, 20), new BoatNode( 12, 20 ), new BoatNode(14, 20), new BoatNode(16, 20), new BoatNode(18, 20), new BoatNode(20, 20) };
+            List<GenericNode> listCoordTest = new List<GenericNode>() { new BoatNode(10, 12), new BoatNode(10, 14), new BoatNode(10, 16), new BoatNode(10, 18), new BoatNode(10, 20), new BoatNode(12, 20), new BoatNode(14, 20), new BoatNode(16, 20), new BoatNode(18, 20), new BoatNode(20, 20) };
             Pen penWhite = new Pen(Color.White);
-            for (int i=0; i<listCoordTest.Count-2;i++)
+            for (int i = 0; i < listCoordTest.Count - 2; i++)
             {
                 Bitmap bg = pictureBoxOcean.Image as Bitmap;
                 Graphics g = Graphics.FromImage(bg);
-                g.DrawLine(penWhite, new Point((int)((BoatNode)listCoordTest[i]).x, (int)((BoatNode)listCoordTest[i]).y), new Point((int)((BoatNode)listCoordTest[i+1]).x, (int)((BoatNode)listCoordTest[i+1]).y));
+                g.DrawLine(penWhite, new Point((int)((BoatNode)listCoordTest[i]).x, (int)((BoatNode)listCoordTest[i]).y), new Point((int)((BoatNode)listCoordTest[i + 1]).x, (int)((BoatNode)listCoordTest[i + 1]).y));
                 pictureBoxOcean.Image = bg;
                 await Task.Delay(500);
             }
