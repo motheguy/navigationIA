@@ -9,11 +9,11 @@ namespace projet
     {
         public double x;
         public double y;
-        public char cas = MainForm.cas;//'a'; à modifier en ‘b’ ou ‘c’ selon le choix de l’utilisateur
+        public char cas = MainForm.cas;
 
 
         //Constructeurs
-        public BoatNode(int X, int Y) //avec arguments
+        public BoatNode(double X, double Y) //avec arguments
         {
             x = X;
             y = Y;
@@ -28,7 +28,7 @@ namespace projet
         /// Calculates a time estimation to reach the final node
         /// </summary>
         /// <returns>Time estimation between a node and the final node</returns>
-        public override double CalculeHCost() 
+        public override double CalculeHCost()
         {
             //Permet d'obtenir une estimation heuristique du cout pour atteindre le point final
 
@@ -66,28 +66,28 @@ namespace projet
             //notre pavage est carre et le point considere possède 8 voisins
 
             List<GenericNode> successeur = new List<GenericNode>();
-            BoatNode b1 = new BoatNode((int)x+1, (int)y);
+            BoatNode b1 = new BoatNode((int)x + 1, (int)y);
             successeur.Add(b1);
 
-            BoatNode b2 = new BoatNode((int)x-1,(int)y);
+            BoatNode b2 = new BoatNode((int)x - 1, (int)y);
             successeur.Add(b2);
 
-            BoatNode b3 = new BoatNode((int)x, (int)y-1);
+            BoatNode b3 = new BoatNode((int)x, (int)y - 1);
             successeur.Add(b3);
 
-            BoatNode b4 = new BoatNode((int)x+1,(int)y-1);
+            BoatNode b4 = new BoatNode((int)x + 1, (int)y - 1);
             successeur.Add(b4);
 
-            BoatNode b5 = new BoatNode((int)x-1,(int)y-1);
+            BoatNode b5 = new BoatNode((int)x - 1, (int)y - 1);
             successeur.Add(b5);
 
-            BoatNode b6 = new BoatNode((int)x,(int)y+1);
+            BoatNode b6 = new BoatNode((int)x, (int)y + 1);
             successeur.Add(b6);
 
-            BoatNode b7 = new BoatNode((int)x+1,(int)y+1);
+            BoatNode b7 = new BoatNode((int)x + 1, (int)y + 1);
             successeur.Add(b7);
 
-            BoatNode b8 = new BoatNode((int)x-1,(int)y+1);
+            BoatNode b8 = new BoatNode((int)x - 1, (int)y + 1);
             successeur.Add(b8);
 
             return successeur;
