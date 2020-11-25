@@ -36,9 +36,14 @@ namespace projet
             //A faire : Changer les textBox pour des NumericUpDown 
             int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
             int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
+
             int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
-            int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
+            int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
             using Graphics g = Graphics.FromImage(bg);
+
+            beginY = 300 - beginY;
+            endY = 300 - endY;
+
             //g.DrawLine(penRed, new Point(beginX, beginY), new Point(endX,endY));
             g.DrawImage(begin, beginX, beginY, 8, 8); //modifier les 4e et 5e parametres pour changer la taille des croix
             g.DrawImage(end, endX, endY, 8, 8);
@@ -59,9 +64,9 @@ namespace projet
             //On récupère les valeurs saisies
             //BONUS : On vérifie d'abord que toutes les valeurs sont saisies //A FAIRE
             Xi = Convert.ToInt32(textBoxXi.Text);
-            Yi = Convert.ToInt32(textBoxYi.Text);
+            Yi = 300 - Convert.ToInt32(textBoxYi.Text);
             Xf = Convert.ToInt32(textBoxXf.Text);
-            Yf = Convert.ToInt32(textBoxYf.Text);
+            Yf = 300 - Convert.ToInt32(textBoxYf.Text);
             cas = cmbBxWind.Text[0];
             textBoxResult.Text = "Type de vent choisi : " + cas + "";
             await Task.Delay(20);
@@ -75,7 +80,8 @@ namespace projet
             BoatNode Nf = new BoatNode(Xf, Yf);
 
             //On lance la recherche du meilleur chemin
-            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+            List<GenericNode> solution = new List<GenericNode>(); //initialisation pour pouvoir refaire des calculs dans le programme
+            solution = g.RechercheSolutionAEtoile(N0);
 
             if (solution.Count == 0)//il n'y a pas de solution
             {
@@ -109,7 +115,7 @@ namespace projet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e) // A ENLEVER
         {
             textBoxXi.Text = "10";
             textBoxYi.Text = "10";
@@ -127,7 +133,22 @@ namespace projet
                 pictureBoxOcean.Image = bg;
                 await Task.Delay(500);
             }
-            textBoxResult.Text = "Vous avez parcouru la distance en X s";
+            textBoxTime.Text = "Vous avez parcouru la distance en X s";
+        }
+
+        private void Reset(object sender, EventArgs e)
+        {
+            textBoxXi.Text = "100";
+            textBoxYi.Text = "200";
+            textBoxXf.Text = "200";
+            textBoxYf.Text = "100";
+
+            textBoxResult.Text = "";
+            textBoxTime.Text = "";
+
+            //réinitialiser les liste de noeuds ?
+
+
         }
     }
 }
