@@ -44,7 +44,7 @@ namespace projet
         public override bool EndState()
         {
             //on considère qu'on est arrivé si on est à une distance inférieure à notre déplacement minimal
-            return Math.Sqrt((x - MainForm.Xf) * (x - MainForm.Xf) + (y - MainForm.Yf) * (y - MainForm.Yf)) <= 2;
+            return Math.Sqrt((x - MainForm.Xf) * (x - MainForm.Xf) + (y - MainForm.Yf) * (y - MainForm.Yf)) <= 5;
             //return (x == MainForm.Xf && y == MainForm.Yf);
         }
 
@@ -76,13 +76,13 @@ namespace projet
             //pavage de 3 : toutes les 3 cases
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++)
-                    if (i != j && i != 0)
-                        successeur.Add(new BoatNode((int)x + 3 * i, (int)y + 3 * j));
+                    if (j != 0 || i != 0)
+                        successeur.Add(new BoatNode((int)x + 6 * i, (int)y + 6 * j));
 
-            //pavage de 6 : toutes les 3 cases
-            for (int i = -2; i <= 2; i++)
+            //pavage de 3 et 6 : toutes les 3 cases
+            /*for (int i = -2; i <= 2; i++)
                 for (int j = -2; j <= 2; j++)
-                    if (i != j && i != 0)
+                    if (i != 0 || j != 0)
                         successeur.Add(new BoatNode((int)x + 3 * i, (int)y + 3 * j));
             /*
             for (int i = -1; i < 2; i ++)
