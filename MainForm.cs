@@ -30,23 +30,20 @@ namespace projet
         private void Draw()
         {
             Bitmap bg = Bitmap.FromFile(".\\images\\ocean2.jpg") as Bitmap;
-            Bitmap begin = Bitmap.FromFile(".\\images\\x.png") as Bitmap;
-            Bitmap end = Bitmap.FromFile(".\\images\\x.png") as Bitmap;
-            //Pen penRed = new Pen(Color.Red); //d'autres couleurs possibles
             //A faire : Changer les textBox pour des NumericUpDown 
             int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
             int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
 
             int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
             int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
-            using Graphics g = Graphics.FromImage(bg);
 
             //beginY = 300 - beginY;
             //endY = 300 - endY;
 
-            //g.DrawLine(penRed, new Point(beginX, beginY), new Point(endX,endY));
-            g.DrawImage(begin, beginX, beginY, 8, 8); //modifier les 4e et 5e parametres pour changer la taille des croix
-            g.DrawImage(end, endX, endY, 8, 8);
+            using Graphics g = Graphics.FromImage(bg);
+            Brush yellowBruch = new SolidBrush(Color.Yellow);
+            g.FillEllipse(yellowBruch, beginX - 4, beginX - 4, 8, 8);
+            g.FillEllipse(yellowBruch, endX - 4, endX - 4, 8, 8);
             pictureBoxOcean.Image = bg;
         }
         ///<summary>
@@ -69,7 +66,18 @@ namespace projet
             Xf = Convert.ToInt32(textBoxXf.Text);
             //Yf = 300-Convert.ToInt32(textBoxYf.Text);
             Yf = Convert.ToInt32(textBoxYf.Text);
-            cas = cmbBxWind.Text[0];
+            if (radioButtonA.Checked)
+            {
+                cas =radioButtonA.Text[0];
+            }
+            else if (radioButtonB.Checked)
+            {
+                cas = radioButtonB.Text[0];
+            }
+            else if (radioButtonC.Checked)
+            {
+                cas = radioButtonC.Text[0];
+            }
             textBoxResult.Text = "Type de vent choisi : " + cas + "";
             await Task.Delay(20);
 
@@ -105,7 +113,7 @@ namespace projet
                 //textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
                 int somme = g.CountInOpenList() + g.CountInClosedList();
                 textBoxNbSolution.Text = solution.Count().ToString();
-                textBoxSomme.Text = somme.ToString();
+                textBoxSomme.Text = somme.ToString() + "\nO:"+ g.CountInOpenList().ToString()+"\nF:"+ g.CountInClosedList().ToString();
                 double time = 0;
 
                 for (int i = 0; i < solution.Count - 1; i++)
@@ -120,37 +128,13 @@ namespace projet
                     time = time + noeud.GetGCost();
                 }
                 */
-                textBoxTime.Text = time.ToString() + "h";
+                textBoxTime.Text = Math.Round(time,2,MidpointRounding.ToEven).ToString() + "h";
             }
 
         }
         /// <summary>
-        /// Juste un test
+        /// Reset the form
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private async void button1_Click_1(object sender, EventArgs e) // A ENLEVER
-        {
-            textBoxXi.Text = "10";
-            textBoxYi.Text = "10";
-            textBoxXf.Text = "20";
-            textBoxYf.Text = "20";
-            Draw();
-            //Récuperer les coordonnées de chaque noeud enregistré normalement dans solution
-            List<GenericNode> listCoordTest = new List<GenericNode>() { new BoatNode(10, 12), new BoatNode(10, 14), new BoatNode(10, 16), new BoatNode(10, 18), new BoatNode(10, 20), new BoatNode(12, 20), new BoatNode(14, 20), new BoatNode(16, 20), new BoatNode(18, 20), new BoatNode(20, 20) };
-            Pen penWhite = new Pen(Color.White);
-            for (int i = 0; i < listCoordTest.Count - 2; i++)
-            {
-                Bitmap bg = pictureBoxOcean.Image as Bitmap;
-                Graphics g = Graphics.FromImage(bg);
-                g.DrawLine(penWhite, new Point((int)((BoatNode)listCoordTest[i]).x, (int)((BoatNode)listCoordTest[i]).y), new Point((int)((BoatNode)listCoordTest[i + 1]).x, (int)((BoatNode)listCoordTest[i + 1]).y));
-                pictureBoxOcean.Image = bg;
-                await Task.Delay(500);
-            }
-            textBoxTime.Text = "Vous avez parcouru la distance en X s";
-        }
-
         private void Reset(object sender, EventArgs e)
         {
             textBoxXi.Text = "100";
@@ -160,13 +144,13 @@ namespace projet
 
             textBoxResult.Text = "";
             textBoxTime.Text = "";
+            textBoxSomme.Text = "";
+            textBoxNbSolution.Text = "";
 
+
+            Draw();
             //réinitialiser les liste de noeuds
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

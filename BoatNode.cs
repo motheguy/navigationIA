@@ -62,7 +62,7 @@ namespace projet
         }
 
         /// <summary>
-        /// Returns the 8 nodes adjacent to the studied node
+        /// Returns the nodes adjacent to the studied node
         /// </summary>
         /// <returns>List of GenericNode</returns>
         public override List<GenericNode> GetListSucc() //OK a verifier
