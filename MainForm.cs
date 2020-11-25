@@ -41,8 +41,8 @@ namespace projet
             int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
             using Graphics g = Graphics.FromImage(bg);
 
-            beginY = 300 - beginY;
-            endY = 300 - endY;
+            //beginY = 300 - beginY;
+            //endY = 300 - endY;
 
             //g.DrawLine(penRed, new Point(beginX, beginY), new Point(endX,endY));
             g.DrawImage(begin, beginX, beginY, 8, 8); //modifier les 4e et 5e parametres pour changer la taille des croix
@@ -64,9 +64,11 @@ namespace projet
             //On récupère les valeurs saisies
             //BONUS : On vérifie d'abord que toutes les valeurs sont saisies //A FAIRE
             Xi = Convert.ToInt32(textBoxXi.Text);
-            Yi = 300 - Convert.ToInt32(textBoxYi.Text);
+            Yi = Convert.ToInt32(textBoxYi.Text);
+            //Yi = 300-Convert.ToInt32(textBoxYi.Text);
             Xf = Convert.ToInt32(textBoxXf.Text);
-            Yf = 300 - Convert.ToInt32(textBoxYf.Text);
+            //Yf = 300-Convert.ToInt32(textBoxYf.Text);
+            Yf = Convert.ToInt32(textBoxYf.Text);
             cas = cmbBxWind.Text[0];
             textBoxResult.Text = "Type de vent choisi : " + cas + "";
             await Task.Delay(20);
@@ -100,7 +102,10 @@ namespace projet
                     pictureBoxOcean.Image = bg;
                     await Task.Delay(200);
                 }
-                textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
+                //textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
+                int somme = g.CountInOpenList() + g.CountInClosedList();
+                textBoxNbSolution.Text = solution.Count().ToString();
+                textBoxSomme.Text = somme.ToString();
                 double time = 0;
                 foreach (GenericNode noeud in solution)
                 {
@@ -115,6 +120,7 @@ namespace projet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
         private async void button1_Click_1(object sender, EventArgs e) // A ENLEVER
         {
             textBoxXi.Text = "10";
@@ -146,8 +152,11 @@ namespace projet
             textBoxResult.Text = "";
             textBoxTime.Text = "";
 
-            //réinitialiser les liste de noeuds ?
+            //réinitialiser les liste de noeuds
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
