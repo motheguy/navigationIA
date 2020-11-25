@@ -38,7 +38,7 @@ namespace projet
             return (distance / boatspeed);
 
             //double time = time_estimationH(x, y, MainForm.Xf, MainForm.Yf); //test avec un nouveau time_estimation
-            //return time; // cça ne marchera pas avec time estimation si la distance est supérieure à 10km car retour 10000
+            //return time;
         }
 
         public override bool EndState()
@@ -58,7 +58,6 @@ namespace projet
             //Permet d'obtenir le cout de l'arc entre 2 noeuds
             BoatNode N2bis = (BoatNode)N2;
             double valGCostN2 = time_estimation(x, y, N2bis.x, N2bis.y); //On calcule le cout
-            N2.SetGCost(valGCostN2); //On l'enregistre dans N2
             return valGCostN2;
         }
 
