@@ -30,16 +30,12 @@ namespace projet
         private void Draw()
         {
             Bitmap bg = Bitmap.FromFile(".\\images\\ocean2.jpg") as Bitmap;
-            //A faire : Changer les textBox pour des NumericUpDown 
             int beginX = (int)numericUpDownXi.Value;
             int beginY = (int)numericUpDownYi.Value;
 
             int endX = (int)numericUpDownXf.Value;
             int endY = (int)numericUpDownYf.Value;
-            //int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
-            //int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
-            //int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
-            //int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
+     
 
             beginY = pictureBoxOcean.Height - beginY;
             endY = pictureBoxOcean.Height - endY;
@@ -60,10 +56,10 @@ namespace projet
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            //Quand l'utilisateur appuie sur le bouton démarrer, le code se lance
 
+            //Quand l'utilisateur appuie sur le bouton démarrer, le code se lance
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             //On récupère les valeurs saisies
-            //BONUS : On vérifie d'abord que toutes les valeurs sont saisies --> Pas besoin on a des valeurs pas défaut ?
             Xi = (int)numericUpDownXi.Value;
             Yi = (int)numericUpDownYi.Value;
             
@@ -102,6 +98,7 @@ namespace projet
             }
             else
             {
+                
                 textBoxResult.Text = "Une solution a été trouvée";
                 // Petite animation
                 Pen penWhite = new Pen(Color.White);
@@ -132,6 +129,8 @@ namespace projet
                 }
                 */
                 textBoxTime.Text = Math.Round(time,2,MidpointRounding.ToEven).ToString() + "h";
+                watch.Stop();
+                textBox1.Text = watch.ElapsedMilliseconds.ToString();
             }
 
         }

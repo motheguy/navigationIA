@@ -37,8 +37,6 @@ namespace projet
             double boatspeed = 45;
             return (distance / boatspeed);
 
-            //double time = time_estimationH(x, y, MainForm.Xf, MainForm.Yf); //test avec un nouveau time_estimation
-            //return time; NE focntionnera pas pour Nf à plus de 10 km
         }
 
         public override bool EndState()
@@ -72,174 +70,20 @@ namespace projet
 
             List<GenericNode> successeur = new List<GenericNode>();
 
-            //pavage de 3 : toutes les 3 cases
+            //pavage d'angle à +6
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++)
                     if (j != 0 || i != 0)
                         successeur.Add(new BoatNode((int)x + 6 * i, (int)y + 6 * j));
 
-            //pavage de 3 et 6 : toutes les 3 cases
-            /*for (int i = -2; i <= 2; i++)
-                for (int j = -2; j <= 2; j++)
-                    if (i != 0 || j != 0)
-                        successeur.Add(new BoatNode((int)x + 3 * i, (int)y + 3 * j));
-            /*
-            for (int i = -1; i < 2; i ++)
-            {
-                BoatNode b1 = new BoatNode((int)x + i, (int)y - 1);
-                successeur.Add(b1);
-                BoatNode b2 = new BoatNode((int)x + i, (int)y + 1);
-                successeur.Add(b2);
-                if (i != -1 || i != 1)
-                {
-                    BoatNode b3 = new BoatNode((int)x + 1, (int)y + i);
-                    successeur.Add(b3);
-                    BoatNode b4 = new BoatNode((int)x - 1, (int)y + i);
-                    successeur.Add(b4);
-                }
+            
+            //pavage de 3 : toutes les 3 cases à +6
+            //for (int i = -1; i <= 1; i++)
+            //    for (int j = -1; j <= 1; j++)
+            //        if (j != 0 && i != 0)
+            //            successeur.Add(new BoatNode((int)x + 6 * i, (int)y + 6 * j));
 
-            }
-            */
-
-            /*
-            for (int i = -3; i < 4; i+=3)
-            {
-                BoatNode b1 = new BoatNode((int)x + i, (int)y - 3);
-                successeur.Add(b1);
-                BoatNode b2 = new BoatNode((int)x + i, (int)y + 3);
-                successeur.Add(b2);
-                if (i != -3 || i != 3)
-                {
-                    BoatNode b3 = new BoatNode((int)x + 3, (int)y + i);
-                    successeur.Add(b3);
-                    BoatNode b4 = new BoatNode((int)x - 3, (int)y + i);
-                    successeur.Add(b4);
-                }
-
-            }
-
-            for (int i = -6; i < 7; i += 6)
-            {
-                BoatNode b1 = new BoatNode((int)x + i, (int)y - 6);
-                successeur.Add(b1);
-                BoatNode b2 = new BoatNode((int)x + i, (int)y + 6);
-                successeur.Add(b2);
-                if (i != -6 || i != 6)
-                {
-                    BoatNode b3 = new BoatNode((int)x + 6, (int)y + i);
-                    successeur.Add(b3);
-                    BoatNode b4 = new BoatNode((int)x - 6, (int)y + i);
-                    successeur.Add(b4);
-                }
-            }
-            */
-            /*
-            for (int i = -3; i < 4; i++)
-            {
-                BoatNode b1 = new BoatNode((int)x + i, (int)y -3);
-                successeur.Add(b1);
-                BoatNode b2 = new BoatNode((int)x + i, (int)y + 3);
-                successeur.Add(b2);
-                if (i!=-3 || i!=3)
-                {
-                    BoatNode b3 = new BoatNode((int)x + 3, (int)y + i);
-                    successeur.Add(b3);
-                    BoatNode b4 = new BoatNode((int)x - 3, (int)y + i);
-                    successeur.Add(b4);
-                }                
-                
-            }
-
-            for (int i = -6; i < 7; i +=6)
-            {
-                BoatNode b1 = new BoatNode((int)x + i, (int)y - 6);
-                successeur.Add(b1);
-                BoatNode b2 = new BoatNode((int)x + i, (int)y + 6);
-                successeur.Add(b2);
-                if (i != -6 || i != 6)
-                {
-                    BoatNode b3 = new BoatNode((int)x + 6, (int)y + i);
-                    successeur.Add(b3);
-                    BoatNode b4 = new BoatNode((int)x - 6, (int)y + i);
-                    successeur.Add(b4);
-                }
-            }
-            */
-
-            //for(int i = -9; i < 10; i++)
-            //{
-            //    BoatNode b1 = new BoatNode((int)x + i, (int)y - 9);
-            //    successeur.Add(b1);
-            //    BoatNode b2 = new BoatNode((int)x + i, (int)y + 9);
-            //    successeur.Add(b2);
-            //    if (i != -9 || i != 9)
-            //    {
-            //        BoatNode b3 = new BoatNode((int)x + 9, (int)y + i);
-            //        successeur.Add(b3);
-            //        BoatNode b4 = new BoatNode((int)x - 9, (int)y + i);
-            //        successeur.Add(b4);
-            //    }
-            //}
-            //for (int i = -3; i < 4; i++)
-            //{
-            //    for (int j = -3; j < 4; j++)
-            //    {
-            //        if (i!=0 && j!=0)
-            //        {
-            //            BoatNode b = new BoatNode((int)x + i, (int)y + j);
-            //            successeur.Add(b);
-            //        }
-            //    }
-            //}
-
-
-            //BoatNode b1 = new BoatNode((int)x + 1, (int)y);
-            //successeur.Add(b1);
-
-            //BoatNode b2 = new BoatNode((int)x - 1, (int)y);
-            //successeur.Add(b2);
-
-            //BoatNode b3 = new BoatNode((int)x, (int)y - 1);
-            //successeur.Add(b3);
-
-            //BoatNode b4 = new BoatNode((int)x + 1, (int)y - 1);
-            //successeur.Add(b4);
-
-            //BoatNode b5 = new BoatNode((int)x - 1, (int)y - 1);
-            //successeur.Add(b5);
-
-            //BoatNode b6 = new BoatNode((int)x, (int)y + 1);
-            //successeur.Add(b6);
-
-            //BoatNode b7 = new BoatNode((int)x + 1, (int)y + 1);
-            //successeur.Add(b7);
-
-            //BoatNode b8 = new BoatNode((int)x - 1, (int)y + 1);
-            //successeur.Add(b8);
-
-            //BoatNode b9 = new BoatNode((int)x - 3, (int)y -3);
-            //successeur.Add(b9);
-
-            //BoatNode b10 = new BoatNode((int)x, (int)y-3);
-            //successeur.Add(b10);
-
-            //BoatNode b11 = new BoatNode((int)x + 3 , (int)y - 3);
-            //successeur.Add(b11);
-
-            //BoatNode b12 = new BoatNode((int)x + 3 , (int)y);
-            //successeur.Add(b12);
-
-            //BoatNode b13 = new BoatNode((int)x +3 , (int)y + 3);
-            //successeur.Add(b13);
-
-            //BoatNode b14 = new BoatNode((int)x , (int)y + 3);
-            //successeur.Add(b14);
-
-            //BoatNode b15 = new BoatNode((int)x - 3, (int)y + 3);
-            //successeur.Add(b15);
-
-            //BoatNode b16 = new BoatNode((int)x-3 , (int)y );
-            //successeur.Add(b16);
+            
 
             return successeur;
         }

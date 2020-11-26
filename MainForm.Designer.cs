@@ -53,6 +53,7 @@
             this.numericUpDownYi = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownXf = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownYf = new System.Windows.Forms.NumericUpDown();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOcean)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYi)).BeginInit();
@@ -334,11 +335,19 @@
             0});
             this.numericUpDownYf.ValueChanged += new System.EventHandler(this.NewCoordinate);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(309, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 27);
+            this.textBox1.TabIndex = 34;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 595);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.numericUpDownYf);
             this.Controls.Add(this.numericUpDownXf);
             this.Controls.Add(this.numericUpDownYi);
@@ -405,6 +414,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownXf;
         private System.Windows.Forms.NumericUpDown numericUDownYf;
         private System.Windows.Forms.NumericUpDown numericUpDownYf;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
