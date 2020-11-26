@@ -38,7 +38,7 @@ namespace projet
             return (distance / boatspeed);
 
             //double time = time_estimationH(x, y, MainForm.Xf, MainForm.Yf); //test avec un nouveau time_estimation
-            //return time;
+            //return time; NE focntionnera pas pour Nf à plus de 10 km
         }
 
         public override bool EndState()

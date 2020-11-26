@@ -31,19 +31,23 @@ namespace projet
         {
             Bitmap bg = Bitmap.FromFile(".\\images\\ocean2.jpg") as Bitmap;
             //A faire : Changer les textBox pour des NumericUpDown 
-            int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
-            int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
+            int beginX = (int)numericUpDownXi.Value;
+            int beginY = (int)numericUpDownYi.Value;
 
-            int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
-            int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
+            int endX = (int)numericUpDownXf.Value;
+            int endY = (int)numericUpDownYf.Value;
+            //int beginX = textBoxXi.Text == "" ? 0 : Convert.ToInt32(textBoxXi.Text);
+            //int beginY = textBoxYi.Text == "" ? 0 : Convert.ToInt32(textBoxYi.Text);
+            //int endX = textBoxXf.Text == "" ? 0 : Convert.ToInt32(textBoxXf.Text);
+            //int endY = textBoxYf.Text == "" ? 0 : Convert.ToInt32(textBoxYf.Text);
 
-            //beginY = 300 - beginY;
-            //endY = 300 - endY;
+            beginY = pictureBoxOcean.Height - beginY;
+            endY = pictureBoxOcean.Height - endY;
 
             using Graphics g = Graphics.FromImage(bg);
             Brush yellowBruch = new SolidBrush(Color.Yellow);
-            g.FillEllipse(yellowBruch, beginX - 4, beginX - 4, 8, 8);
-            g.FillEllipse(yellowBruch, endX - 4, endX - 4, 8, 8);
+            g.FillEllipse(yellowBruch, beginX - 4, beginY - 4, 8, 8);
+            g.FillEllipse(yellowBruch, endX - 4, endY - 4, 8, 8);
             pictureBoxOcean.Image = bg;
         }
         ///<summary>
@@ -59,24 +63,23 @@ namespace projet
             //Quand l'utilisateur appuie sur le bouton démarrer, le code se lance
 
             //On récupère les valeurs saisies
-            //BONUS : On vérifie d'abord que toutes les valeurs sont saisies //A FAIRE
-            Xi = Convert.ToInt32(textBoxXi.Text);
-            Yi = Convert.ToInt32(textBoxYi.Text);
-            //Yi = 300-Convert.ToInt32(textBoxYi.Text);
-            Xf = Convert.ToInt32(textBoxXf.Text);
-            //Yf = 300-Convert.ToInt32(textBoxYf.Text);
-            Yf = Convert.ToInt32(textBoxYf.Text);
-            if (radioButtonA.Checked)
-            {
-                cas =radioButtonA.Text[0];
-            }
-            else if (radioButtonB.Checked)
+            //BONUS : On vérifie d'abord que toutes les valeurs sont saisies --> Pas besoin on a des valeurs pas défaut ?
+            Xi = (int)numericUpDownXi.Value;
+            Yi = (int)numericUpDownYi.Value;
+            
+            Xf = (int)numericUpDownXf.Value;
+            Yf = (int)numericUpDownYf.Value;
+            if (radioButtonB.Checked)
             {
                 cas = radioButtonB.Text[0];
             }
             else if (radioButtonC.Checked)
             {
                 cas = radioButtonC.Text[0];
+            }
+            else
+            {
+                cas = radioButtonA.Text[0]; // si = a ou non défini
             }
             textBoxResult.Text = "Type de vent choisi : " + cas + "";
             await Task.Delay(20);
@@ -106,7 +109,7 @@ namespace projet
                 {
                     Bitmap bg = pictureBoxOcean.Image as Bitmap;
                     Graphics gph = Graphics.FromImage(bg);
-                    gph.DrawLine(penWhite, new Point((int)((BoatNode)solution[i]).x, (int)((BoatNode)solution[i]).y), new Point((int)((BoatNode)solution[i + 1]).x, (int)((BoatNode)solution[i + 1]).y));
+                    gph.DrawLine(penWhite, new Point((int)((BoatNode)solution[i]).x, pictureBoxOcean.Height - (int)((BoatNode)solution[i]).y), new Point((int)((BoatNode)solution[i + 1]).x, pictureBoxOcean.Height - (int)((BoatNode)solution[i + 1]).y));
                     pictureBoxOcean.Image = bg;
                     await Task.Delay(200);
                 }
