@@ -140,10 +140,10 @@ namespace projet
         /// </summary>
         private void Reset(object sender, EventArgs e)
         {
-            textBoxXi.Text = "100";
-            textBoxYi.Text = "200";
-            textBoxXf.Text = "200";
-            textBoxYf.Text = "100";
+            numericUpDownXi.Value = 100;
+            numericUpDownYi.Value = 200;
+            numericUpDownXf.Value = 200;
+            numericUpDownYf.Value = 100;
 
             textBoxResult.Text = "";
             textBoxTime.Text = "";
