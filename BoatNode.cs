@@ -43,7 +43,7 @@ namespace projet
         }
 
         
-        public override double GetArcCost(GenericNode N2) //OK a verifier
+        public override double GetArcCost(GenericNode N2) 
         {
             //Permet d'obtenir le cout de l'arc entre 2 noeuds
             BoatNode N2bis = (BoatNode)N2;
@@ -52,7 +52,7 @@ namespace projet
         }
 
         
-        public override List<GenericNode> GetListSucc() //OK a verifier
+        public override List<GenericNode> GetListSucc() 
         {
             //on recupere les valeurs des points voisins et on les ajoute a notre liste
             //notre pavage est carre et le point considere possède 8 voisins
@@ -74,7 +74,7 @@ namespace projet
             return (x == N2bis.x && y == N2bis.y);
         }
 
-        public double get_wind_speed(double x, double y) //OK a verifier
+        public double get_wind_speed(double x, double y) 
         {
             //On distingue plusieurs cas en fonction de la valeur du char cas, saisi par l'utilisateur
             if (cas == 'a')
@@ -87,7 +87,7 @@ namespace projet
                 return 50;
             else return 20;
         }
-        public double get_wind_direction(double x, double y) //OK a verifier
+        public double get_wind_direction(double x, double y) 
         {
             //On distingue plusieurs cas en fonction de la valeur du char cas, saisi par l'utilisateur
             if (cas == 'a')
@@ -100,7 +100,7 @@ namespace projet
                 return 170;
             else return 65;
         }
-        public double time_estimation(double x1, double y1, double x2, double y2) //OK a verifier
+        public double time_estimation(double x1, double y1, double x2, double y2) 
         {
             //Etape 1 : calcul distance
 
@@ -161,7 +161,7 @@ namespace projet
             return (distance / boatspeed);
         }
 
-        public double time_estimationH(double x1, double y1, double x2, double y2) //OK a verifier
+        public double time_estimationH(double x1, double y1, double x2, double y2) 
         {
             //Etape 1 : calcul distance
 
