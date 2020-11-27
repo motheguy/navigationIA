@@ -24,10 +24,6 @@ namespace projet
 
         }
 
-        /// <summary>
-        /// Calculates a time estimation to reach the final node
-        /// </summary>
-        /// <returns>Time estimation between a node and the final node</returns>
         public override double CalculeHCost()
         {
             //Permet d'obtenir une estimation heuristique du cout pour atteindre le point final
@@ -46,11 +42,7 @@ namespace projet
             //return (x == MainForm.Xf && y == MainForm.Yf);
         }
 
-        /// <summary>
-        /// Calculates the cost in terms of time between two nodes
-        /// </summary>
-        /// <param name="N2"></param>
-        /// <returns>Arc Cost between this node and N2</returns>
+        
         public override double GetArcCost(GenericNode N2) //OK a verifier
         {
             //Permet d'obtenir le cout de l'arc entre 2 noeuds
@@ -59,10 +51,7 @@ namespace projet
             return valGCostN2;
         }
 
-        /// <summary>
-        /// Returns the nodes adjacent to the studied node
-        /// </summary>
-        /// <returns>List of GenericNode</returns>
+        
         public override List<GenericNode> GetListSucc() //OK a verifier
         {
             //on recupere les valeurs des points voisins et on les ajoute a notre liste
@@ -70,20 +59,11 @@ namespace projet
 
             List<GenericNode> successeur = new List<GenericNode>();
 
-            //pavage d'angle à +6
+            //pavage 8 voisins à +6
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++)
                     if (j != 0 || i != 0)
                         successeur.Add(new BoatNode((int)x + 6 * i, (int)y + 6 * j));
-
-            
-            //pavage de 3 : toutes les 3 cases à +6
-            //for (int i = -1; i <= 1; i++)
-            //    for (int j = -1; j <= 1; j++)
-            //        if (j != 0 && i != 0)
-            //            successeur.Add(new BoatNode((int)x + 6 * i, (int)y + 6 * j));
-
-            
 
             return successeur;
         }

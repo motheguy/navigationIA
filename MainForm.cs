@@ -24,11 +24,10 @@ namespace projet
             InitializeComponent();
             Draw();
         }
-        ///<summary>
-        ///Set the background for pictureBoxOcean
-        ///</summary>
+        
         private void Draw()
         {
+           //Determine le fond pour pictureBoxOcean
             Bitmap bg = Bitmap.FromFile(".\\images\\ocean2.jpg") as Bitmap;
             int beginX = (int)numericUpDownXi.Value;
             int beginY = (int)numericUpDownYi.Value;
@@ -46,11 +45,10 @@ namespace projet
             g.FillEllipse(yellowBruch, endX - 4, endY - 4, 8, 8);
             pictureBoxOcean.Image = bg;
         }
-        ///<summary>
-        ///Reset the background for pictureBoxOcean when the coordinates of the departure or arrival points are modified
-        ///</summary>
+        
         private void NewCoordinate(object sender, EventArgs e)
         {
+            // Permet de reinitialiser la puctureBoxOcean si les coordonnées de départ et d'arrivées sont modifiées
             Draw();
         }
 
@@ -110,7 +108,6 @@ namespace projet
                     pictureBoxOcean.Image = bg;
                     await Task.Delay(200);
                 }
-                //textBoxResult.Text = "Nb noeuds des ouverts : " + g.CountInOpenList().ToString() + "\nNb noeuds des fermés : " + g.CountInClosedList().ToString();
                 int somme = g.CountInOpenList() + g.CountInClosedList();
                 textBoxNbSolution.Text = solution.Count().ToString();
                 textBoxSomme.Text = somme.ToString() + "\nO:"+ g.CountInOpenList().ToString()+"\nF:"+ g.CountInClosedList().ToString();
@@ -122,27 +119,24 @@ namespace projet
                     BoatNode nodeArrival = (BoatNode)solution[i + 1];
                     time += nodeIni.time_estimation(nodeIni.x, nodeIni.y, nodeArrival.x, nodeArrival.y);
                 }
-                /*
-                foreach (GenericNode noeud in solution)
-                {
-                    time = time + noeud.GetGCost();
-                }
-                */
+                
                 textBoxTime.Text = Math.Round(time,2,MidpointRounding.ToEven).ToString() + "h";
-                watch.Stop();
-                textBox1.Text = watch.ElapsedMilliseconds.ToString();
+               
             }
 
         }
-        /// <summary>
-        /// Reset the form
-        /// </summary>
+        
         private void Reset(object sender, EventArgs e)
         {
+            // Reinitialise les valeurs du form
             numericUpDownXi.Value = 100;
             numericUpDownYi.Value = 200;
             numericUpDownXf.Value = 200;
             numericUpDownYf.Value = 100;
+
+            radioButtonA.Checked = false;
+            radioButtonB.Checked = false;
+            radioButtonC.Checked = false;
 
             textBoxResult.Text = "";
             textBoxTime.Text = "";
@@ -151,7 +145,7 @@ namespace projet
 
 
             Draw();
-            //réinitialiser les liste de noeuds
+            
         }
 
     }
